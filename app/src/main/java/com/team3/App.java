@@ -16,6 +16,7 @@ public class App {
     public static void main(String[] args) {
         splashScreen splashScr = new splashScreen();
         splashScr.start();
+        act_screen act_screen = new act_screen();
         App app = new App();
         DBService db = new DBService();
         db.test();

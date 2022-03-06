@@ -23,5 +23,6 @@ public class View {
 
         // Load player entry screen
         this.playerEntry = new PlayerEntry(this.jFrame);
+        act_screen.start();
     }
 }
