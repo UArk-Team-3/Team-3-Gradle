@@ -23,6 +23,8 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:30.1.1-jre'
     
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
+    
     implementation 'com.oracle.database.jdbc:ojdbc8:19.6.0.0'
     implementation 'com.oracle.database.jdbc:ucp:19.6.0.0'
 }
