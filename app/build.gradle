@@ -16,9 +16,15 @@ repositories {
     mavenCentral()
 }
 
+configurations{
+    extraLibs
+}
+
 dependencies {
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13.2'
+
+    extraLibs group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:30.1.1-jre'
@@ -37,5 +43,9 @@ application {
 jar {
     manifest{
         attributes 'Main-Class': 'com.team3.App'
+    }
+
+    from{
+        configurations.extraLibs.collect{it.isDirectory() ? it : zipTree(it)}
     }
 }
