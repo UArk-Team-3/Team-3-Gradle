@@ -36,6 +36,6 @@ application {
 
 jar {
     manifest{
-        attributes 'Main-Class': 'com.team3'
+        attributes 'Main-Class': 'com.team3.App'
     }
 }
