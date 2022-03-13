@@ -4,19 +4,30 @@
  */
 package com.team3;
 
+import javax.swing.JFrame;
 
 /**
  *
  * @author pjrio
  */
-public class act_screen extends javax.swing.JFrame {
+public class act_screen {
 
+    Controller controller;
+    JFrame jFrame;
     /**
      * Creates new form act_screen
      */
-    public act_screen() {
+    public act_screen(JFrame jFrame, Controller controller) {
+        this.jFrame = jFrame;
+        this.controller = controller;
+
         initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
+        this.jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }
+
+    public void show()
+    {
+        this.jFrame.getContentPane().setVisible(true);
     }
 
     /**
@@ -82,15 +93,15 @@ public class act_screen extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TeamA_update = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 0));
-        addWindowStateListener(new java.awt.event.WindowStateListener() {
+        
+        this.jFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.jFrame.setBackground(new java.awt.Color(0, 0, 0));
+        this.jFrame.addWindowStateListener(new java.awt.event.WindowStateListener() {
             public void windowStateChanged(java.awt.event.WindowEvent evt) {
                 formWindowStateChanged(evt);
             }
         });
-        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+        this.jFrame.getContentPane().setLayout(new javax.swing.BoxLayout(this.jFrame.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel7.setBackground(new java.awt.Color(0, 51, 255));
 
@@ -855,10 +866,10 @@ public class act_screen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel7);
+        this.jFrame.getContentPane().add(jPanel7);
 
-        pack();
-        setLocationRelativeTo(null);
+        this.jFrame.pack();
+        this.jFrame.setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
@@ -895,7 +906,8 @@ public class act_screen extends javax.swing.JFrame {
         
     }
     
-        public static void start() {
+        public void start() {
+
         int scoreRed=150;
         int scoreGrn=50;
         
@@ -903,7 +915,7 @@ public class act_screen extends javax.swing.JFrame {
         int player2=50;
         
         /* Create and display the form */
-        new act_screen().setVisible(true);
+        this.jFrame.setVisible(true);
         timer.setVisible(false); 
         timerText.setVisible(false); 
         try{
