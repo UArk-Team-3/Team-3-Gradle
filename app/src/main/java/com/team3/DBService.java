@@ -13,6 +13,9 @@ package com.team3;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
 public class DBService {
 
@@ -44,16 +47,40 @@ public class DBService {
     //Creating a player in the database
     //Use SQL commands to modifiy the database with these methods
     public void create_player(int id, String first_name, String last_name, String codename){
-        
+        try {
+        Statement st = getConnection().createStatement();
+
+        // Revisit later and use PreparedStatement instead. Safer and more modular
+        String query = "INSERT INTO player VALUES ('" + id + "', '" + first_name + "', '" + last_name + "', '" + codename + "');";
+        ResultSet rs = st.executeQuery(query);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     //Removing a player in the Database
     public void remove_player(int id){
-
+        try {
+            Statement st = getConnection().createStatement();
+            
+            // Revisit later and use PreparedStatement instead. Safer and more modular
+            String query = "DELETE FROM player WHERE id = '" + id + "';";
+            ResultSet rs = st.executeQuery(query);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     //Modifing a player in the Database
-    public void modify_player(int id){
-
+    public void modify_player(int id, String first_name, String last_name, String codename){
+        try {
+            Statement st = getConnection().createStatement();
+            
+            // Revisit later and use PreparedStatement instead. Safer and more modular
+            String query = "UPDATE player SET first_name = '" + first_name + "', last_name = '" + last_name + "', codename = '" + codename + "'  WHERE id = '" + id + "';";
+            ResultSet rs = st.executeQuery(query);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
