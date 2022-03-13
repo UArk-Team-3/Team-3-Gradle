@@ -62,15 +62,26 @@ public class DBService {
         }
     }
 
+        // Add team color to the database. Execute once.
+        public void addColorColumn() {
+            try {
+                Statement stmt = conn.createStatement();
+                stmt.executeUpdate("ALTER TABLE player ADD team_color varchar(5);");
+            } catch (SQLException e) {
+                System.out.println("Failed to execute addColorColumn\n");
+                System.out.println(e.getMessage());
+            }
+        }
+
     //Creating a player in the database
     //Use SQL commands to modifiy the database with these methods
-    public void create_player(int id, String first_name, String last_name, String codename){
+    public void create_player(int id, String first_name, String last_name, String codename, String team_color){
         try {
             if (!conn.isClosed()) {
                 Statement st = conn.createStatement();
 
                 // Revisit later and use PreparedStatement instead. Safer and more modular
-                String create_command = "INSERT INTO player VALUES ('" + id + "', '" + first_name + "', '" + last_name + "', '" + codename + "');";
+                String create_command = "INSERT INTO player VALUES ('" + id + "', '" + first_name + "', '" + last_name + "', '" + codename + "', '" + team_color + "');";
                 st.executeUpdate(create_command);
             } else {
                 System.out.println("Can't execute create_player without a connection.\n");
@@ -99,13 +110,13 @@ public class DBService {
     }
 
     //Modifing a player in the Database
-    public void modify_player(int id, String first_name, String last_name, String codename){
+    public void modify_player(int id, String first_name, String last_name, String codename, String team_color){
         try {
             if (!conn.isClosed()) {
                 Statement st = conn.createStatement();
                 
                 // Revisit later and use PreparedStatement instead. Safer and more modular
-                String modify_command = "UPDATE player SET first_name = '" + first_name + "', last_name = '" + last_name + "', codename = '" + codename + "'  WHERE id = '" + id + "';";
+                String modify_command = "UPDATE player SET first_name = '" + first_name + "', last_name = '" + last_name + "', codename = '" + codename + "', team_color = '" + team_color + "' WHERE id = '" + id + "';";
                 st.executeUpdate(modify_command);
             } else {
                 System.out.println("Can't execute modify_player without a connection.\n");
