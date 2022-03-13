@@ -18,7 +18,23 @@ public class App {
         splashScr.start();
         App app = new App();
         DBService db = new DBService();
+
+        // now essential as being the initial connection to the database
+        // that all other database modification methods used
         db.test();
+
+        
+        
+        //db.create_player(21, "lukas", "vaughan", "SwagBunny777");
+        //db.create_player(14, "John", "Smith", "KebabsYourUncle");
+        //db.create_player(22, "Tony", "Stark", "Iron Man");
+        //db.create_player(2, "Mega", "Mind", "BluesClues");
+        //db.remove_player(21);
+        //db.remove_player(14);
+        //db.remove_player(22);
+
+        // Selects first_name and last_name from "player" table and prints them
+        db.testQuery();
     }
 }
 
