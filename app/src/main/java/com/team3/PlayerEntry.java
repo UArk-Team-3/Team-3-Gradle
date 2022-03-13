@@ -160,6 +160,15 @@ public class PlayerEntry {
         return teamPanel;
     }
 
+    public void updatePlayer()
+    {
+        for (int i = 0; i < redChecks.length; i++)
+        {
+            System.out.println(redChecks[i].getText());
+            System.out.println(redTexts1[i].getText());
+        }
+    }
+
     // TODO We might have to move these event handlers to the controller class when moving to the repo
     // Team button handler
     public class TeamButtonEventHandler implements ActionListener {
