@@ -30,10 +30,16 @@ public class PlayerEntry {
     private JTextField[] redTexts2 = new JTextField[maxEntries];
     private JTextField[] blueTexts2 = new JTextField[maxEntries];
 
+    // References to relevant classes
+    Controller controller;
+
     /**
      * Creates player entry screen
      */
-    PlayerEntry(JFrame jFrame) {
+    PlayerEntry(JFrame jFrame, Controller controller) {
+        // Define reference variables
+        this.controller = controller;
+        
         // Create title panel and add it to the top of the window
         JPanel titlePanel = makeTitlePanel();
         jFrame.add(titlePanel, "North");
