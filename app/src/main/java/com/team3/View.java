@@ -2,6 +2,7 @@ package com.team3;
 
 import javax.swing.JFrame;
 import java.awt.Container;
+import java.awt.KeyboardFocusManager;
 
 public class View {
     JFrame jFrame;
@@ -18,8 +19,10 @@ public class View {
         this.jFrame = new JFrame();
         this.controller = controller;
 
+        // Add key listeners
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(controller);
+
         // Create application window
-        this.jFrame.addKeyListener(controller);
         this.jFrame.setTitle("Placeholder Title");
         this.jFrame.setSize(750, 750);
         this.jFrame.setResizable(false);
