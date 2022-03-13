@@ -23,6 +23,8 @@ public class act_screen {
 
         initComponents();
         this.jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        start();
+
     }
 
     public void show()
@@ -876,37 +878,8 @@ public class act_screen {
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowStateChanged
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(act_screen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(act_screen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(act_screen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(act_screen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-
-    }
-
-        public void start() {
+    public void start() {
 
         int scoreRed=150;
         int scoreGrn=50;
@@ -914,81 +887,83 @@ public class act_screen {
         int player1=150;
         int player2=50;
 
-        /* Create and display the form */
-        this.jFrame.setVisible(true);
+        // /* Create and display the form */
+        // //this.jFrame.setVisible(true);
         timer.setVisible(false);
         timerText.setVisible(false);
-        try{
-            //Increase loading bar percentage
 
+        try{
+            //30 s warning
             for(int i = 30; i > 0; i--){
                 String out = String.valueOf(i);
                 out = String.format("%2s",out).replace(' ','0');
                 timer1.setText("00:"+out);
                 Thread.sleep(1000);
-            }
-            timer1.setVisible(false);
-            timerText1.setVisible(false);
-
-            int seconds=60;
-            for(int i = 360; i >= 0; i--){
-                timer.setVisible(true);
-                timerText.setVisible(true);
-                if(i==300 || i==240||i==180||i==120||i==60){seconds=60;}
-                Thread.sleep(500);
-                if(player2>player1){
-                    red_player1.setVisible(false);
-                    red_player1_score.setVisible(false);
-                }else{
-                    green_player1.setVisible(false);
-                    green_player1_score.setVisible(false);
-                }
-
-                if(scoreRed>scoreGrn){ red_total_score.setVisible(false); Thread.sleep(50);
-                }else{green_total_score.setVisible(false);}
-
-                Thread.sleep(500);
-                seconds--;
-                //show
-                red_player1_score.setVisible(true);
-                red_player1.setVisible(true);
-                green_player1_score.setVisible(true);
-                green_player1.setVisible(true);
-
-                red_total_score.setVisible(true);
-                green_total_score.setVisible(true);
-                TeamA_update.setForeground(new java.awt.Color(255, 0, 51));
-                TeamA_update.append("Trial ");
-                TeamA_update.setForeground(new java.awt.Color(51,255,0));
-                TeamA_update.append(i + "\n");
-                TeamA_update.setCaretPosition(TeamA_update.getDocument().getLength());
-                TeamA_update.setForeground(new java.awt.Color(255, 0, 51));
-
-                TeamB_update.setForeground(new java.awt.Color(51,255,0));
-                TeamB_update.append("Trial ");
-                TeamB_update.setForeground(new java.awt.Color(255, 0, 51));
-                TeamB_update.append(i + "\n");
-                TeamB_update.setCaretPosition(TeamB_update.getDocument().getLength());
-                TeamB_update.setForeground(new java.awt.Color(51,255,0));
-
-                String out = String.valueOf(seconds);
-                out = String.format("%2s",out).replace(' ','0');
-
-                if(i>300){timer.setText("05:"+ out);}
-                else if(i<300 && i>=240){timer.setText("04:"+out);}
-                else if(i<240 && i>=180){timer.setText("03:"+out);}
-                else if(i<180 && i>=120){timer.setText("02:"+out);}
-                else if(i<120 && i>=60){timer.setText("01:"+out);}
-                else if(i<60 && i>0){timer.setText("00:"+out);}
-            }
-
-        }catch(Exception e){}
+            // }
+             timer1.setVisible(false);
+             timerText1.setVisible(false);
+        //
+        //     int seconds=60;
+        //     for(int i = 360; i >= 0; i--){
+        //         timer.setVisible(true);
+        //         timerText.setVisible(true);
+        //         if(i==300 || i==240||i==180||i==120||i==60){seconds=60;}
+        //         Thread.sleep(500);
+        //         if(player2>player1){
+        //             red_player1.setVisible(false);
+        //             red_player1_score.setVisible(false);
+        //         }else{
+        //             green_player1.setVisible(false);
+        //             green_player1_score.setVisible(false);
+        //         }
+        //
+        //         if(scoreRed>scoreGrn){ red_total_score.setVisible(false); Thread.sleep(50);
+        //         }else{green_total_score.setVisible(false);}
+        //
+        //         Thread.sleep(500);
+        //         seconds--;
+        //         //show
+        //         red_player1_score.setVisible(true);
+        //         red_player1.setVisible(true);
+        //         green_player1_score.setVisible(true);
+        //         green_player1.setVisible(true);
+        //
+        //         red_total_score.setVisible(true);
+        //         green_total_score.setVisible(true);
+        //
+        //         //updates to screen
+        //         TeamA_update.setForeground(new java.awt.Color(255, 0, 51));
+        //         TeamA_update.append("Trial ");
+        //         TeamA_update.setForeground(new java.awt.Color(51,255,0));
+        //         TeamA_update.append(i + "\n");
+        //         TeamA_update.setCaretPosition(TeamA_update.getDocument().getLength());
+        //         TeamA_update.setForeground(new java.awt.Color(255, 0, 51));
+        //
+        //         TeamB_update.setForeground(new java.awt.Color(51,255,0));
+        //         TeamB_update.append("Trial ");
+        //         TeamB_update.setForeground(new java.awt.Color(255, 0, 51));
+        //         TeamB_update.append(i + "\n");
+        //         TeamB_update.setCaretPosition(TeamB_update.getDocument().getLength());
+        //         TeamB_update.setForeground(new java.awt.Color(51,255,0));
+        //
+        //         String out = String.valueOf(seconds);
+        //         out = String.format("%2s",out).replace(' ','0');
+        //
+        //         if(i>300){timer.setText("05:"+ out);}
+        //         else if(i<300 && i>=240){timer.setText("04:"+out);}
+        //         else if(i<240 && i>=180){timer.setText("03:"+out);}
+        //         else if(i<180 && i>=120){timer.setText("02:"+out);}
+        //         else if(i<120 && i>=60){timer.setText("01:"+out);}
+        //         else if(i<60 && i>0){timer.setText("00:"+out);}
+        //     }
+        //
+         }catch(Exception e){}
 
       }
 
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration
     private javax.swing.JPanel PlayersA;
     private javax.swing.JPanel Sep;
     private javax.swing.JPanel Sep1;

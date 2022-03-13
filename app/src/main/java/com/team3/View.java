@@ -6,7 +6,7 @@ import java.awt.Container;
 public class View {
     JFrame jFrame;
     Controller controller;
-    
+
     PlayerEntry playerEntry;
     act_screen act_screen;
 
