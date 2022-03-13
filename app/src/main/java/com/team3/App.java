@@ -6,14 +6,19 @@ package com.team3;
 import com.team3.splashScreen.splashScreen;
 
 public class App {
+    Controller controller;
+    View view;
 
+    App(){
+        controller = new Controller();
+        view = new View(controller);
+    }
     public static void main(String[] args) {
-        DBService db = new DBService();
-        Controller controller = new Controller(db);
         splashScreen splashScr = new splashScreen();
         splashScr.start();
-        View view = new View(controller);
-        controller.setView(view);
+        act_screen act_screen = new act_screen();
+        App app = new App();
+        DBService db = new DBService();
         db.test();
     }
 }

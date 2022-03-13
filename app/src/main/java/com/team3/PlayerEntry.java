@@ -30,16 +30,10 @@ public class PlayerEntry {
     private JTextField[] redTexts2 = new JTextField[maxEntries];
     private JTextField[] blueTexts2 = new JTextField[maxEntries];
 
-    // References to relevant classes
-    Controller controller;
-
     /**
      * Creates player entry screen
      */
-    PlayerEntry(JFrame jFrame, Controller controller) {
-        // Define reference variables
-        this.controller = controller;
-        
+    PlayerEntry(JFrame jFrame) {
         // Create title panel and add it to the top of the window
         JPanel titlePanel = makeTitlePanel();
         jFrame.add(titlePanel, "North");
@@ -158,15 +152,6 @@ public class PlayerEntry {
         teamPanel.add(entryPanel);
 
         return teamPanel;
-    }
-
-    public void updatePlayer()
-    {
-        for (int i = 0; i < redChecks.length; i++)
-        {
-            System.out.println(redChecks[i].getText());
-            System.out.println(redTexts1[i].getText());
-        }
     }
 
     // TODO We might have to move these event handlers to the controller class when moving to the repo
