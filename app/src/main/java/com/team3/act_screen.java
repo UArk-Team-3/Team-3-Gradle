@@ -989,7 +989,7 @@ public class act_screen extends javax.swing.JFrame {
 
         int progressBar = 30;
         int totalSeconds = 360;
-        int seconds = 60;
+        int seconds = 59;
 
         public UpdatePlayerEntry() {
             /* Create and display the form */
