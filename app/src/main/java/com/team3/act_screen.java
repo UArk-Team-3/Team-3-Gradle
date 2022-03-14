@@ -965,6 +965,15 @@ public class act_screen extends javax.swing.JFrame {
     }
 
     public void start() {
+
+        // red_player1.setText(View.redFirst.get(0)+" "+View.redLast.get(0));
+        // red_player2.setText(View.redFirst.get(1)+" "+View.redLast.get(1));
+        // red_player3.setText(View.redFirst.get(2)+" "+View.redLast.get(2));
+        //
+        // green_player1.setText(View.blueFirst.get(0)+" "+View.blueLast.get(0)));
+        // green_player2.setText(View.blueFirst.get(0)+" "+View.blueLast.get(0)));
+        // green_player4.setText(View.blueFirst.get(0)+" "+View.blueLast.get(0)));
+
         java.util.TimerTask task = this.new UpdatePlayerEntry();
         clock.schedule(task, 500, 1000);
 

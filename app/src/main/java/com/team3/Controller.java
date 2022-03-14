@@ -32,6 +32,7 @@ public class Controller implements KeyEventDispatcher {
                 if (!actionScreenLoaded)
                 {
                     System.out.println("--Opening action screen--");
+                    view.playerEntry.sortEntries();
                     view.loadActionScreen();
                     actionScreenLoaded = true;
                 }
