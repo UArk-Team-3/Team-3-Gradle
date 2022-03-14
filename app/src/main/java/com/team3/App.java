@@ -6,21 +6,14 @@ package com.team3;
 import com.team3.splashScreen.splashScreen;
 
 public class App {
-    Controller controller;
-    View view;
 
-    App(){
-        controller = new Controller();
-        view = new View(controller);
-    }
     public static void main(String[] args) {
         splashScreen splashScr = new splashScreen();
         splashScr.start();
-        App app = new App();
         DBService db = new DBService();
-
-        // now essential as being the initial connection to the database
-        // that all other database modification methods used
+        Controller controller = new Controller(db);
+        View view = new View(controller);
+        controller.setView(view);
         db.test();
 
         
@@ -40,5 +33,3 @@ public class App {
 
     }
 }
-
-
