@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class View {
     JFrame jFrame;
+    act_screen act_screen;
 
     PlayerEntry playerEntry;
 
@@ -38,7 +39,8 @@ public class View {
 
     public void loadActionScreen()
     {
-        act_screen.start();
+        this.act_screen = new act_screen();
+        this.act_screen.start();
     }
 
     public void printValues(){
