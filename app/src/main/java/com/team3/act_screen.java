@@ -125,7 +125,7 @@ public class act_screen extends javax.swing.JFrame {
         red_player1.setBackground(new java.awt.Color(255, 255, 255));
         red_player1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 30)); // NOI18N
         red_player1.setForeground(new java.awt.Color(255, 0, 51));
-        red_player1.setText("  Player 1");
+        red_player1.setText(View.redFirst.get(0) + View.redLast.get(0) + '-' + View.redCode.get(0));
         red_player1.setPreferredSize(new java.awt.Dimension(112, 35));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -150,7 +150,7 @@ public class act_screen extends javax.swing.JFrame {
         red_player2.setBackground(new java.awt.Color(0, 0, 0));
         red_player2.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 30)); // NOI18N
         red_player2.setForeground(new java.awt.Color(255, 0, 51));
-        red_player2.setText("  Player 2");
+        red_player2.setText(View.redFirst.get(1) + View.redLast.get(1) + '-' + View.redCode.get(1));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -171,7 +171,7 @@ public class act_screen extends javax.swing.JFrame {
         red_player3.setBackground(new java.awt.Color(255, 255, 255));
         red_player3.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 30)); // NOI18N
         red_player3.setForeground(new java.awt.Color(255, 0, 51));
-        red_player3.setText("  Player 3");
+        red_player3.setText(View.redFirst.get(2) + View.redLast.get(2) + '-' + View.redCode.get(2));
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -417,7 +417,7 @@ public class act_screen extends javax.swing.JFrame {
         green_player1.setBackground(new java.awt.Color(255, 255, 255));
         green_player1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 30)); // NOI18N
         green_player1.setForeground(new java.awt.Color(51, 255, 0));
-        green_player1.setText("Player 1");
+        green_player1.setText(View.blueFirst.get(0) + View.blueLast.get(0) + '-' + View.blueCode.get(0));
         green_player1.setPreferredSize(new java.awt.Dimension(112, 35));
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
@@ -443,7 +443,7 @@ public class act_screen extends javax.swing.JFrame {
         green_player2.setBackground(new java.awt.Color(0, 0, 0));
         green_player2.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 30)); // NOI18N
         green_player2.setForeground(new java.awt.Color(51, 255, 0));
-        green_player2.setText("Player 2");
+        green_player2.setText(View.blueFirst.get(1) + View.blueLast.get(1) + '-' + View.blueCode.get(1));
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -464,7 +464,7 @@ public class act_screen extends javax.swing.JFrame {
         green_player4.setBackground(new java.awt.Color(255, 255, 255));
         green_player4.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 30)); // NOI18N
         green_player4.setForeground(new java.awt.Color(51, 255, 0));
-        green_player4.setText("Player 3");
+        green_player4.setText(View.blueFirst.get(2) + View.blueLast.get(2) + '-' + View.blueCode.get(2));
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
