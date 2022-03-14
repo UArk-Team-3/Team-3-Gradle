@@ -188,37 +188,37 @@ public class PlayerEntry {
         functionPanel.add(editGameBtn);
 
         // F2
-        JButton gameParametersBtn = new JButton("<html><center>F2<br/>Edit<br/>Game<br/><center></html>");
+        JButton gameParametersBtn = new JButton("<html><center>F2<br/>Game<br/>Parameters<br/><center></html>");
         gameParametersBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(gameParametersBtn);
 
         // F3
-        JButton startGameBtn = new JButton("<html><center>F3<br/>Edit<br/>Game<br/><center></html>");
+        JButton startGameBtn = new JButton("<html><center>F3<br/>Start<br/>Game<br/><center></html>");
         startGameBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(startGameBtn);
 
         // F5
-        JButton preEnteredGamesBtn = new JButton("<html><center>F5<br/>Edit<br/>Game<br/><center></html>");
+        JButton preEnteredGamesBtn = new JButton("<html><center>F5<br/>PreEntered<br/>Games<br/><center></html>");
         preEnteredGamesBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(preEnteredGamesBtn);
 
         // F7
-        JButton f7GameBtn = new JButton("<html><center>F7<br/>Edit<br/>Game<center></html>");
+        JButton f7GameBtn = new JButton("<html><center><br/>F7<br/><br/><center></html>");
         f7GameBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(f7GameBtn);
 
         // F8
-        JButton viewGameBtn = new JButton("<html><center>F8<br/>Edit<br/>Game<br/><center></html>");
+        JButton viewGameBtn = new JButton("<html><center>F8<br/>View<br/>Game<br/><center></html>");
         viewGameBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(viewGameBtn);
 
         // F10
-        JButton flickSyncBtn = new JButton("<html><center>F10<br/>Edit<br/>Game<br/><center></html>");
+        JButton flickSyncBtn = new JButton("<html><center>F10<br/>Flick<br/>Sync<br/><center></html>");
         flickSyncBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(flickSyncBtn);
 
         // F12
-        JButton clearGameBtn = new JButton("<html><center>F12<br/>Edit<br/>Game<br/><center></html>");
+        JButton clearGameBtn = new JButton("<html><center>F12<br/>Clear<br/>Game<br/><center></html>");
         clearGameBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(clearGameBtn);
 
