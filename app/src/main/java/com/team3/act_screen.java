@@ -966,7 +966,8 @@ public class act_screen extends javax.swing.JFrame {
 
     public void start() {
         java.util.TimerTask task = this.new UpdatePlayerEntry();
-        clock.schedule(task, 2000, 5000);
+        clock.schedule(task, 500, 1000);
+
     }
 
     class UpdatePlayerEntry extends java.util.TimerTask {
@@ -977,85 +978,110 @@ public class act_screen extends javax.swing.JFrame {
         int player1 = 150;
         int player2 = 50;
 
+        int progressBar = 30;
+        int totalSeconds = 360;
+        int seconds = 60;
+
         public UpdatePlayerEntry() {
             /* Create and display the form */
             new act_screen().setVisible(true);
             timer.setVisible(false);
             timerText.setVisible(false);
+
+            // show
+            red_player1_score.setVisible(true);
+            red_player1.setVisible(true);
+            green_player1_score.setVisible(true);
+            green_player1.setVisible(true);
+
+            red_total_score.setVisible(true);
+            green_total_score.setVisible(true);
+        }
+
+        public void update() {
+            if (progressBar > 0) {
+                progressBar--;
+            } else {
+                timer1.setVisible(false);
+                timerText1.setVisible(false);
+            }
+
+            if (totalSeconds > 0 && progressBar == 0) {
+                totalSeconds--;
+            }
+
+            if (seconds >= 0 && progressBar == 0) {
+                seconds--;
+            } else {
+                seconds = 59;
+            }
         }
 
         @Override
         public void run() {
             // Increase loading bar percentage
-            for (int i = 30; i > 0; i--) {
-                String out = String.valueOf(i);
-                out = String.format("%2s", out).replace(' ', '0');
-                timer1.setText("00:" + out);
-            }
-            timer1.setVisible(false);
-            timerText1.setVisible(false);
+            String out = String.valueOf(progressBar);
+            out = String.format("%2s", out).replace(' ', '0');
+            timer1.setText("00:" + out);
 
-            int seconds = 60;
-            for (int i = 360; i >= 0; i--) {
-                timer.setVisible(true);
-                timerText.setVisible(true);
-                if (i == 300 || i == 240 || i == 180 || i == 120 || i == 60) {
-                    seconds = 60;
-                }
-                if (player2 > player1) {
-                    red_player1.setVisible(false);
-                    red_player1_score.setVisible(false);
-                } else {
-                    green_player1.setVisible(false);
-                    green_player1_score.setVisible(false);
-                }
+            // int seconds = 60;
+            timer.setVisible(true);
+            timerText.setVisible(true);
+            // if (totalSeconds == 300 || totalSeconds == 240 || totalSeconds == 180 ||
+            // totalSeconds == 120
+            // || totalSeconds == 60) {
+            // seconds = 60;
+            // }
+            // seconds--;
 
-                if (scoreRed > scoreGrn) {
-                    red_total_score.setVisible(false);
-                } else {
-                    green_total_score.setVisible(false);
-                }
+            // if (player2 > player1) {
+            // red_player1.setVisible(false);
+            // red_player1_score.setVisible(false);
+            // } else {
+            // green_player1.setVisible(false);
+            // green_player1_score.setVisible(false);
+            // }
 
-                seconds--;
-                // show
-                red_player1_score.setVisible(true);
-                red_player1.setVisible(true);
-                green_player1_score.setVisible(true);
-                green_player1.setVisible(true);
+            // if (scoreRed > scoreGrn) {
+            // red_total_score.setVisible(false);
+            // } else {
+            // green_total_score.setVisible(false);
+            // }
 
-                red_total_score.setVisible(true);
-                green_total_score.setVisible(true);
+            if (progressBar == 0) {
                 TeamA_update.setForeground(new java.awt.Color(255, 0, 51));
                 TeamA_update.append("Trial ");
                 TeamA_update.setForeground(new java.awt.Color(51, 255, 0));
-                TeamA_update.append(i + "\n");
+                TeamA_update.append(totalSeconds + "\n");
                 TeamA_update.setCaretPosition(TeamA_update.getDocument().getLength());
                 TeamA_update.setForeground(new java.awt.Color(255, 0, 51));
 
                 TeamB_update.setForeground(new java.awt.Color(51, 255, 0));
                 TeamB_update.append("Trial ");
                 TeamB_update.setForeground(new java.awt.Color(255, 0, 51));
-                TeamB_update.append(i + "\n");
+                TeamB_update.append(totalSeconds + "\n");
                 TeamB_update.setCaretPosition(TeamB_update.getDocument().getLength());
                 TeamB_update.setForeground(new java.awt.Color(51, 255, 0));
-
-                String out = String.valueOf(seconds);
-                out = String.format("%2s", out).replace(' ', '0');
-
-                if (i > 300) {
-                    timer.setText("05:" + out);
-                } else if (i < 300 && i >= 240) {
-                    timer.setText("04:" + out);
-                } else if (i < 240 && i >= 180) {
-                    timer.setText("03:" + out);
-                } else if (i < 180 && i >= 120) {
-                    timer.setText("02:" + out);
-                } else if (i < 120 && i >= 60) {
-                    timer.setText("01:" + out);
-                } else if (i < 60 && i > 0) {
-                    timer.setText("00:" + out);
-                }
             }
+
+            String out2 = String.valueOf(seconds);
+            out2 = String.format("%2s", out2).replace(' ', '0');
+
+            if (totalSeconds > 300) {
+                timer.setText("05:" + out2);
+            } else if (totalSeconds < 300 && totalSeconds >= 240) {
+                timer.setText("04:" + out2);
+            } else if (totalSeconds < 240 && totalSeconds >= 180) {
+                timer.setText("03:" + out2);
+            } else if (totalSeconds < 180 && totalSeconds >= 120) {
+                timer.setText("02:" + out2);
+            } else if (totalSeconds < 120 && totalSeconds >= 60) {
+                timer.setText("01:" + out2);
+            } else if (totalSeconds < 60 && totalSeconds > 0) {
+                timer.setText("00:" + out2);
+            }
+
+            this.update();
         }
     }
 
