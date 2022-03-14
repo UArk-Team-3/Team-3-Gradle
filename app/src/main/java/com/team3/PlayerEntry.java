@@ -15,6 +15,7 @@ import java.awt.GridLayout;
 
 // Event handling libraries
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class PlayerEntry {
@@ -188,40 +189,73 @@ public class PlayerEntry {
         functionPanel.add(editGameBtn);
 
         // F2
-        JButton gameParametersBtn = new JButton("<html><center>F2<br/>Game<br/>Parameters<br/><center></html>");
+        JButton gameParametersBtn = new JButton("<html><center>F2<br/>Edit<br/>Game<br/><center></html>");
         gameParametersBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(gameParametersBtn);
 
         // F3
-        JButton startGameBtn = new JButton("<html><center>F3<br/>Start<br/>Game<br/><center></html>");
+        JButton startGameBtn = new JButton("<html><center>F3<br/>Edit<br/>Game<br/><center></html>");
         startGameBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(startGameBtn);
 
         // F5
-        JButton preEnteredGamesBtn = new JButton("<html><center>F5<br/>PreEntered<br/>Games<br/><center></html>");
+        JButton preEnteredGamesBtn = new JButton("<html><center>F5<br/>Edit<br/>Game<br/><center></html>");
         preEnteredGamesBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(preEnteredGamesBtn);
 
         // F7
-        JButton f7GameBtn = new JButton("<html><center><br/>F7<br/><br/><center></html>");
+        JButton f7GameBtn = new JButton("<html><center>F7<br/>Edit<br/>Game<center></html>");
         f7GameBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(f7GameBtn);
 
         // F8
-        JButton viewGameBtn = new JButton("<html><center>F8<br/>View<br/>Game<br/><center></html>");
+        JButton viewGameBtn = new JButton("<html><center>F8<br/>Edit<br/>Game<br/><center></html>");
         viewGameBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(viewGameBtn);
 
         // F10
-        JButton flickSyncBtn = new JButton("<html><center>F10<br/>Flick<br/>Sync<br/><center></html>");
+        JButton flickSyncBtn = new JButton("<html><center>F10<br/>Edit<br/>Game<br/><center></html>");
         flickSyncBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(flickSyncBtn);
 
         // F12
-        JButton clearGameBtn = new JButton("<html><center>F12<br/>Clear<br/>Game<br/><center></html>");
+        JButton clearGameBtn = new JButton("<html><center>F12<br/>Edit<br/>Game<br/><center></html>");
         clearGameBtn.addActionListener(new ModeButtonEventHandler());
         functionPanel.add(clearGameBtn);
 
         return functionPanel;
     }
+    
+    //------------------------------------------------------------------------------|
+    // Find the entries with positive checks and send them to the view class arrays
+    //------------------------------------------------------------------------------|
+    public void sortEntries(){
+        for (int i = 0; i < maxEntries; i++) {
+            if(redChecks[i].isSelected()){
+                String[] splitedR = redTexts1[i].getText().split("\\s+");
+				String first = splitedR[0];
+                String second = "";
+                if(splitedR.length == 2){
+				    second = splitedR[1];
+                }
+                View.redFirst.add(first);
+                View.redLast.add(second);
+                View.redCode.add(redTexts2[i].getText());
+            }
+            if(blueChecks[i].isSelected()){
+                String[] splitedB = blueTexts1[i].getText().split("\\s+");
+				String first = splitedB[0];
+                String second = "";
+                if(splitedB.length == 2){
+				    second = splitedB[1];
+                }
+                View.blueFirst.add(first);
+                View.blueLast.add(second);
+                View.blueCode.add(blueTexts2[i].getText());
+            }
+        }
+
+    }
+    
+
 }

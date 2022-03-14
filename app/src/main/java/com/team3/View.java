@@ -2,11 +2,19 @@ package com.team3;
 
 import javax.swing.JFrame;
 import java.awt.KeyboardFocusManager;
+import java.util.ArrayList;
 
 public class View {
     JFrame jFrame;
 
     PlayerEntry playerEntry;
+
+    public static ArrayList<String> blueFirst = new ArrayList<>();
+    public static ArrayList<String> blueLast = new ArrayList<>();
+    public static ArrayList<String> blueCode = new ArrayList<>();
+    public static ArrayList<String> redFirst = new ArrayList<>();
+    public static ArrayList<String> redLast = new ArrayList<>();
+    public static ArrayList<String> redCode = new ArrayList<>();
 
     View(Controller controller) {
         // Define member variables
@@ -31,5 +39,16 @@ public class View {
     public void loadActionScreen()
     {
         act_screen.start();
+    }
+
+    public void printValues(){
+
+        for(int i = 0; i < blueFirst.size(); i++){
+            System.out.println("First: " + blueFirst.get(i) + "Last: " + blueLast.get(i) + "Code: " + blueCode.get(i));
+        }
+        
+        for(int i = 0; i < redFirst.size(); i++){
+            System.out.println("First: " + redFirst.get(i) + "Last: " + redLast.get(i) + "Code: " + redCode.get(i));
+        }
     }
 }
