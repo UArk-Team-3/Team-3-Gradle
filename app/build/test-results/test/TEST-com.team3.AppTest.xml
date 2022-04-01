@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.team3.AppTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-14T04:41:47" hostname="DESKTOP-J1HB1DB" time="0.003">
+  <properties/>
+  <testcase name="appHasAGreeting" classname="com.team3.AppTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
