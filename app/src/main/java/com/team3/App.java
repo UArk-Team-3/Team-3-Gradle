@@ -3,6 +3,8 @@
  */
 package com.team3;
 
+import java.net.SocketException;
+
 import com.team3.splashScreen.splashScreen;
 
 public class App {
@@ -32,6 +34,11 @@ public class App {
 
         // db.testQuery();
 
-        DatagramServer server = new DatagramServer(49152, 49153);
+        try {
+            DatagramServer server = new DatagramServer(7501, 7500);
+        } catch (Exception exception) {
+            System.out.println("[-] Datagram server could not be created due to network errors:");
+            exception.printStackTrace();
+        }
     }
 }
