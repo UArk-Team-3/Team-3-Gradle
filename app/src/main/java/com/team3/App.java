@@ -29,7 +29,9 @@ public class App {
         //db.remove_player(22);
 
         // Selects first_name and last_name from "player" table and prints them
-        db.testQuery();
 
+        // db.testQuery();
+
+        DatagramServer server = new DatagramServer(49152, 49153);
     }
 }
