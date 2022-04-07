@@ -10,12 +10,17 @@ public class View {
 
     PlayerEntry playerEntry;
 
+    // Player information and scores
     public static ArrayList<String> blueFirst = new ArrayList<>();
     public static ArrayList<String> blueLast = new ArrayList<>();
     public static ArrayList<String> blueCode = new ArrayList<>();
+    public static int[] blueScores = new int[15];
+    public static int blueScore = 0;
     public static ArrayList<String> redFirst = new ArrayList<>();
     public static ArrayList<String> redLast = new ArrayList<>();
     public static ArrayList<String> redCode = new ArrayList<>();
+    public static int[] redScores = new int[15];
+    public static int redScore = 0;
 
     View(Controller controller) {
         // Define member variables

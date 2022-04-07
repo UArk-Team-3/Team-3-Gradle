@@ -44,19 +44,29 @@ class DatagramServer {
                 // Grab blue player and red player code name; red is offset by 15
                 if(player1 < numBluePlayers && ((player2 - 15) < numRedPlayers)){
                     action = View.blueCode.get(player1) + " hit " + View.redCode.get(player2 - 15);
+
+                    // Update the score of the player and team
+                    View.blueScores[player1] += 10;
+                    View.blueScore += 10;
                 }
             }
         }
 
         // Same as above but if red player hits blue player
-        if(player2 >= 15){
-            if(player1 <= 14){
-                if(((player2 - 15) < numRedPlayers) && player1 < numBluePlayers){
-                    action = View.redCode.get(player2 - 15) + " hit " + View.blueCode.get(player1);
+        else if(player1 >= 15){
+            if(player2 <= 14){
+                if(((player1 - 15) < numRedPlayers) && player2 < numBluePlayers){
+                    action = View.redCode.get(player1 - 15) + " hit " + View.blueCode.get(player2);
+
+                    // Update the score of the player an team
+                    View.redScores[player1-15] += 10;
+                    View.redScore += 10;
                 }
             }
         }
 
+        //System.out.println("action: " + action);
+        //System.out.println("Blue Team Score: " + View.blueScore + " Red Team Score: " + View.redScore);
         return action;
 
     }
