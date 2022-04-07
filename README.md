@@ -23,4 +23,4 @@ gradlew run
 ./gradlew run
 ```
 
-> Note: Depending on the IDE that's being used, this may result in obfuscated output printing to the terminal, so best practice would be to run the command from outside of the IDE being used.
+> Note: Depending on the IDE that's being used, this may result in obfuscated output printing to the terminal, so best practice would be to run the command from a dedicated terminal.
