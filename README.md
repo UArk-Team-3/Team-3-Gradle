@@ -14,13 +14,13 @@ The project can also be run without the installation of gradle by using the stan
 ### Batch
 
 ```batch
-gradlew run
+gradlew run --console=plain
 ```
 
 ### Bash
 
 ```bash
-./gradlew run
+./gradlew run --console=plain
 ```
 
 > Note: Depending on the IDE that's being used, this may result in obfuscated output printing to the terminal, so best practice would be to run the command from a dedicated terminal.
