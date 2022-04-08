@@ -15,6 +15,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.sql.ResultSet;
 
 public class DBService {
@@ -124,5 +125,24 @@ public class DBService {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void player_to_db(ArrayList<String> redFirst,
+                             ArrayList<String> redLast,
+                             ArrayList<String> redCode,
+                             ArrayList<String> blueFirst,
+                             ArrayList<String> blueLast,
+                             ArrayList<String> blueCode)
+    {
+        // Add all red players from View to the database
+        for (int i = 0; i < redFirst.size(); i++) {
+            create_player(i, redFirst.get(i), redLast.get(i), redCode.get(i), "red");
+        }
+        
+        // Add all blue players from View to the database
+        for (int i = 0; i < blueFirst.size(); i++) {
+            create_player(i, blueFirst.get(i), blueLast.get(i), blueCode.get(i), "blue");
+        }
+        
     }
 }
