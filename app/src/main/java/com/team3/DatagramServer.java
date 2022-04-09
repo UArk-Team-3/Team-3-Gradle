@@ -2,28 +2,48 @@ package com.team3;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.nio.ByteBuffer;
 
 class DatagramServer {
     private DatagramSocket receiver;
+    private DatagramSocket sender;
+    private InetAddress broadcastAddress;
 
     DatagramServer(int receiverPort, int senderPort) throws Exception {
         this.receiver = new DatagramSocket(receiverPort);
+        this.sender = new DatagramSocket(senderPort);
+        this.broadcastAddress = InetAddress.getLocalHost();
+    }
 
+    protected void listen() throws Exception {
         while (true) {
             // Data packet specifications
-            byte[] receivedData = new byte[32];
-            DatagramPacket receivedPacket = new DatagramPacket(receivedData, receivedData.length);
+            byte[] data = new byte[32];
+            DatagramPacket packet = new DatagramPacket(data, data.length);
 
-            //Listen for packet
-            this.receiver.receive(receivedPacket);
+            // Listen for packet
+            this.receiver.receive(packet);
 
             // Data validation after packet is received
-            String data = this.data(receivedData).toString().replaceAll(" ", "");
-            if (this.validate(data))
-            {
-                this.processData(data);
+            String strData = this.data(data).toString().replaceAll(" ", "");
+            if (this.validate(strData)) {
+                this.processData(strData);
+                this.broadcast(Integer.parseInt(strData.split(":")[1]));
             }
         }
+    }
+
+    private void broadcast(int id) throws Exception {
+        ByteBuffer buffer = ByteBuffer.allocate(4);
+        buffer.putInt(id);
+
+        DatagramPacket packet = new DatagramPacket(buffer.array(), buffer.array().length, this.broadcastAddress,
+                this.sender.getLocalPort());
+
+        this.sender.send(packet);
+        System.out.println(
+                "[+] '" + id + "' has been sent to " + this.broadcastAddress + " from port " + this.sender.getLocalPort());
     }
 
     private String processData(String data){
@@ -113,14 +133,14 @@ class DatagramServer {
                 intInput[i] = Integer.parseInt(strInput[i]);
             }
         } catch (NumberFormatException exception) {
-            System.out.println("[-] Input '" + data + "' does not contain only numerical values.");
+            System.out.println("[-] Input '" + data + "' does not contain only numerical values or an integer is too large.");
             return false;
         }
 
-        // If either integer in input is out of bounds
+        // If integer is not positive
         for (int i = 0; i < strInput.length; i++) {
-            if (intInput[i] < 0 || intInput[i] > Integer.MAX_VALUE) {
-                System.out.println("[-] Integer '" + strInput[i] + "' is out of bounds.");
+            if (intInput[i] < 0) {
+                System.out.println("[-] Integer '" + strInput[i] + "' is not positive.");
                 return false;
             }
         }
