@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class View {
     JFrame jFrame;
     act_screen act_screen;
-
     PlayerEntry playerEntry;
 
     public static ArrayList<String> blueFirst = new ArrayList<>();

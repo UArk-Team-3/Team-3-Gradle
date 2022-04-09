@@ -127,7 +127,23 @@ public class DBService {
         }
     }
 
-    public void player_to_db(ArrayList<String> redFirst,
+    public void remove_all_players(){
+        try {
+            if (!conn.isClosed()) {
+                Statement st = conn.createStatement();
+                
+                // Revisit later and use PreparedStatement instead. Safer and more modular
+                String remove_command = "DELETE FROM player;";
+                st.executeUpdate(remove_command);
+            } else {
+                System.out.println("Can't execute remove_player without a connection.\n");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void players_to_db(ArrayList<String> redFirst,
                              ArrayList<String> redLast,
                              ArrayList<String> redCode,
                              ArrayList<String> blueFirst,
@@ -142,7 +158,6 @@ public class DBService {
         // Add all blue players from View to the database
         for (int i = 0; i < blueFirst.size(); i++) {
             create_player(i, blueFirst.get(i), blueLast.get(i), blueCode.get(i), "blue");
-        }
-        
+        }  
     }
 }
