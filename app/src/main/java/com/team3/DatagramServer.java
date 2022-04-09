@@ -6,9 +6,16 @@ import java.net.DatagramSocket;
 class DatagramServer {
     private DatagramSocket receiver;
 
+    public static boolean  red_signal;
+    public static boolean  grn_signal;
+    public static String   to_print;
+
     DatagramServer(int receiverPort, int senderPort) throws Exception {
         // Create a receiver for, well, receiving packets
         this.receiver = new DatagramSocket(receiverPort);
+
+        red_signal= false;
+        grn_signal= false;
 
         while (true) {
             // Sample data packet to receive
@@ -39,6 +46,7 @@ class DatagramServer {
 
         // If blue player hits red player
         if(player1 <= 14){
+            grn_signal=true;
             // Double check that player two is a red player
             if(player2 >= 15){
                 // Grab blue player and red player code name; red is offset by 15
@@ -54,6 +62,7 @@ class DatagramServer {
 
         // Same as above but if red player hits blue player
         else if(player1 >= 15){
+            red_signal=true;
             if(player2 <= 14){
                 if(((player1 - 15) < numRedPlayers) && player2 < numBluePlayers){
                     action = View.redCode.get(player1 - 15) + " hit " + View.blueCode.get(player2);
@@ -67,6 +76,7 @@ class DatagramServer {
 
         //System.out.println("action: " + action);
         //System.out.println("Blue Team Score: " + View.blueScore + " Red Team Score: " + View.redScore);
+        to_print = action;
         return action;
 
     }
@@ -87,4 +97,3 @@ class DatagramServer {
 		return ret;
 	}
 }
-
