@@ -7,22 +7,26 @@ class DatagramServer {
     private DatagramSocket receiver;
 
     DatagramServer(int receiverPort, int senderPort) throws Exception {
-        // Create a receiver for, well, receiving packets
         this.receiver = new DatagramSocket(receiverPort);
 
         while (true) {
-            // Sample data packet to receive
+            // Data packet specifications
             byte[] receivedData = new byte[32];
             DatagramPacket receivedPacket = new DatagramPacket(receivedData, receivedData.length);
 
-            // Testing if data is being received by our socket
+            //Listen for packet
             this.receiver.receive(receivedPacket);
-            processData(data(receivedData).toString());
-            System.out.println(new String(receivedData));
+
+            // Data validation after packet is received
+            String data = this.data(receivedData).toString().replaceAll(" ", "");
+            if (this.validate(data))
+            {
+                this.processData(data);
+            }
         }
     }
 
-    public String processData(String data){
+    private String processData(String data){
         // Grab the size of the codename arrays
         int numRedPlayers = View.blueCode.size();
         int numBluePlayers = View.redCode.size();
@@ -73,7 +77,7 @@ class DatagramServer {
 
     // A utility method to convert the byte array
 	// data into a string representation.
-	public static StringBuilder data(byte[] a)
+	private StringBuilder data(byte[] a)
 	{
 		if (a == null)
 			return null;
@@ -86,5 +90,43 @@ class DatagramServer {
 		}
 		return ret;
 	}
+
+    private boolean validate(String data) {
+        // If input is empty
+        if (data.isEmpty()) {
+            System.out.println("[-] No value entered for input.");
+            return false;
+        }
+
+        // If input does not have two distinct values
+        String[] strInput = data.split(":");
+        if (strInput.length != 2) {
+            System.out.println("[-] Input '" + data + "' does not have two numerical values separated by ':'.");
+            return false;
+        }
+
+        int[] intInput = new int[strInput.length];
+
+        // If input is non-numeric
+        try {
+            for (int i = 0; i < strInput.length; i++) {
+                intInput[i] = Integer.parseInt(strInput[i]);
+            }
+        } catch (NumberFormatException exception) {
+            System.out.println("[-] Input '" + data + "' does not contain only numerical values.");
+            return false;
+        }
+
+        // If either integer in input is out of bounds
+        for (int i = 0; i < strInput.length; i++) {
+            if (intInput[i] < 0 || intInput[i] > Integer.MAX_VALUE) {
+                System.out.println("[-] Integer '" + strInput[i] + "' is out of bounds.");
+                return false;
+            }
+        }
+    
+        System.out.println("[+] Input '" + data + "' accepted.");
+        return true;
+    }
 }
 
