@@ -24,7 +24,7 @@ class DatagramServer {
 
             // Testing if data is being received by our socket
             this.receiver.receive(receivedPacket);
-            processData(data(receivedData).toString());
+            to_print = processData(data(receivedData).toString());
             System.out.println(new String(receivedData));
         }
     }
@@ -76,7 +76,6 @@ class DatagramServer {
 
         //System.out.println("action: " + action);
         //System.out.println("Blue Team Score: " + View.blueScore + " Red Team Score: " + View.redScore);
-        to_print = action;
         return action;
 
     }

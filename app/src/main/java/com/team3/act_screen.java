@@ -48,7 +48,7 @@ public class act_screen extends javax.swing.JFrame {
          red_player3 = new javax.swing.JLabel();
          jPanel2 = new javax.swing.JPanel();
          jPanel6 = new javax.swing.JPanel();
-         red_player4_score = new javax.swing.JLabel();
+         red_player3_score = new javax.swing.JLabel();
          jPanel10 = new javax.swing.JPanel();
          red_player2_score = new javax.swing.JLabel();
          jPanel19 = new javax.swing.JPanel();
@@ -65,7 +65,7 @@ public class act_screen extends javax.swing.JFrame {
          jPanel16 = new javax.swing.JPanel();
          green_player2 = new javax.swing.JLabel();
          jPanel17 = new javax.swing.JPanel();
-         green_player4 = new javax.swing.JLabel();
+         green_player3 = new javax.swing.JLabel();
          jPanel18 = new javax.swing.JPanel();
          jPanel20 = new javax.swing.JPanel();
          green_player3_score = new javax.swing.JLabel();
@@ -200,12 +200,12 @@ public class act_screen extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(0, 0, 0));
 
-        red_player4_score.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 30)); // NOI18N
-        red_player4_score.setForeground(new java.awt.Color(255, 0, 51));
-        red_player4_score.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        red_player4_score.setText("0");
-        red_player4_score.setPreferredSize(new java.awt.Dimension(50, 29));
-        red_player4_score.setVisible(false);
+        red_player3_score.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 30)); // NOI18N
+        red_player3_score.setForeground(new java.awt.Color(255, 0, 51));
+        red_player3_score.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        red_player3_score.setText("0");
+        red_player3_score.setPreferredSize(new java.awt.Dimension(50, 29));
+        red_player3_score.setVisible(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -213,13 +213,13 @@ public class act_screen extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(red_player4_score, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+                .addComponent(red_player3_score, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 43, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(red_player4_score, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                .addComponent(red_player3_score, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
         );
 
         jPanel10.setBackground(new java.awt.Color(0, 0, 0));
@@ -464,11 +464,11 @@ public class act_screen extends javax.swing.JFrame {
         jPanel17.setBackground(new java.awt.Color(0, 0, 0));
         jPanel17.setPreferredSize(new java.awt.Dimension(253, 35));
 
-        green_player4.setBackground(new java.awt.Color(255, 255, 255));
-        green_player4.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 30)); // NOI18N
-        green_player4.setForeground(new java.awt.Color(51, 255, 0));
-        green_player4.setText("Player 3");
-        green_player4.setVisible(false);
+        green_player3.setBackground(new java.awt.Color(255, 255, 255));
+        green_player3.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 30)); // NOI18N
+        green_player3.setForeground(new java.awt.Color(51, 255, 0));
+        green_player3.setText("Player 3");
+        green_player3.setVisible(false);
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -476,13 +476,13 @@ public class act_screen extends javax.swing.JFrame {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(green_player4, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
+                .addComponent(green_player3, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
             .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(green_player4, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                .addComponent(green_player3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
         );
 
         jPanel18.setBackground(new java.awt.Color(0, 0, 0));
@@ -928,36 +928,36 @@ public class act_screen extends javax.swing.JFrame {
 
       //loop over arrays and gets names
 
-      for (int i = 0; i < View.redFirst.size()+1; i++){
+      for (int i = 0; i < View.redCode.size()+1; i++){
         switch (i) {
-           case 1:  red_player1.setText(" " + View.redFirst.get(i-1));
+           case 1:  red_player1.setText(" " + View.redCode.get(i-1));
                     red_player1.setVisible(true);
                     red_player1_score.setVisible(true);
                     break;
-           case 2:  red_player2.setText(" " + View.redFirst.get(i-1));
+           case 2:  red_player2.setText(" " + View.redCode.get(i-1));
                     red_player2.setVisible(true);
                     red_player2_score.setVisible(true);
                     break;
-           case 3:  red_player3.setText(" " + View.redFirst.get(i-1));
+           case 3:  red_player3.setText(" " + View.redCode.get(i-1));
                     red_player3.setVisible(true);
-                    red_player4_score.setVisible(true);
+                    red_player3_score.setVisible(true);
                     break;
 
         }
       }
 
-      for (int j = 0; j < View.redFirst.size()+1; j++){
+      for (int j = 0; j < View.blueCode.size()+1; j++){
         switch (j) {
-           case 1:  green_player1.setText("" + View.blueFirst.get(j-1));
+           case 1:  green_player1.setText("" + View.blueCode.get(j-1));
                     green_player1.setVisible(true);
                     green_player1_score.setVisible(true);
                     break;
-           case 2:  green_player2.setText("" + View.blueFirst.get(j-1));
+           case 2:  green_player2.setText("" + View.blueCode.get(j-1));
                     green_player2.setVisible(true);
                     green_player2_score.setVisible(true);
                     break;
-           case 3:  green_player4.setText("" + View.blueFirst.get(j-1));
-                    green_player4.setVisible(true);
+           case 3:  green_player3.setText("" + View.blueCode.get(j-1));
+                    green_player3.setVisible(true);
                     green_player3_score.setVisible(true);
                     break;
         }
@@ -972,7 +972,7 @@ public class act_screen extends javax.swing.JFrame {
                     break;
            case 2:  red_player2_score.setText(" " + View.redScores[i-1]);
                     break;
-           case 3:  red_player4_score.setText(" " + View.redScores[i-1]);
+           case 3:  red_player3_score.setText(" " + View.redScores[i-1]);
                     break;
         }
       }
@@ -1030,7 +1030,7 @@ public class act_screen extends javax.swing.JFrame {
                     break;
            case 2:
                     red_player3.setVisible(!visibility);
-                    red_player4_score.setVisible(!visibility);
+                    red_player3_score.setVisible(!visibility);
                     break;
         }
       }
@@ -1045,7 +1045,7 @@ public class act_screen extends javax.swing.JFrame {
                     green_player2_score.setVisible(!visibility);
                     break;
            case 2:
-                    green_player4.setVisible(!visibility);
+                    green_player3.setVisible(!visibility);
                     green_player3_score.setVisible(!visibility);
                     break;
         }
@@ -1188,7 +1188,7 @@ public class act_screen extends javax.swing.JFrame {
     private static javax.swing.JLabel green_player2;
     private static javax.swing.JLabel green_player2_score;
     private static javax.swing.JLabel green_player3_score;
-    private static javax.swing.JLabel green_player4;
+    private static javax.swing.JLabel green_player3;
     private static javax.swing.JLabel green_total_score;
     private javax.swing.JButton jButtonEndGame;
     private javax.swing.JLabel jLabel1;
@@ -1223,7 +1223,7 @@ public class act_screen extends javax.swing.JFrame {
     private static javax.swing.JLabel red_player2;
     private static javax.swing.JLabel red_player2_score;
     private static javax.swing.JLabel red_player3;
-    private static javax.swing.JLabel red_player4_score;
+    private static javax.swing.JLabel red_player3_score;
     private static javax.swing.JLabel red_total_score;
     private javax.swing.JPanel teamA;
     private javax.swing.JPanel teamA1;
