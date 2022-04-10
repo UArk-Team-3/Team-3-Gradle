@@ -9,18 +9,20 @@ To build the project locally download and install Gradle to your machine and add
 
 ## Using gradlew
 
-The project can also be run without the installation of gradle by using the standalone gradlew script included in the main directory of the repository. It will be built automatically with `gradlew build` before running.
+The project can also be run without the installation of gradle by using the standalone gradlew script included in the main directory of the repository.
 
 ### Batch
 
 ```batch
+gradlew build --console=plain
 gradlew run --console=plain
 ```
 
 ### Bash
 
 ```bash
+./gradlew build --console=plain
 ./gradlew run --console=plain
 ```
 
-> Note: Depending on the IDE that's being used, this may result in obfuscated output printing to the terminal, so best practice would be to run the command from a dedicated terminal.
+> Note: The option `--console=plain` makes sure that output from the application and output from the gradlew script dont overwrite each other.
