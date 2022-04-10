@@ -923,6 +923,7 @@ public class act_screen extends javax.swing.JFrame {
         myFrame.dispatchEvent(new WindowEvent(myFrame, WindowEvent.WINDOW_CLOSING));
     }// GEN-LAST:event_jButtonEndGameActionPerformed
 
+    //displays the names of the players in the array
     private void dis_Names() {
 
       //loop over arrays and gets names
@@ -941,12 +942,7 @@ public class act_screen extends javax.swing.JFrame {
                     red_player3.setVisible(true);
                     red_player4_score.setVisible(true);
                     break;
-           // case 4:  red_player4.setText(" " + View.redFirst.get(i-1));
-           //          red_player4.setVisible(true);
-           //          break;
-           // case 5:  mred_player5.setText(" " + View.redFirst.get(i-1));
-           //          red_player5.setVisible(true);
-           //          break;
+
         }
       }
 
@@ -964,10 +960,6 @@ public class act_screen extends javax.swing.JFrame {
                     green_player4.setVisible(true);
                     green_player3_score.setVisible(true);
                     break;
-           // case 4:  monthString = "April";
-           //          break;
-           // case 5:  monthString = "May";
-           //          break;
         }
       }
     }
@@ -982,12 +974,6 @@ public class act_screen extends javax.swing.JFrame {
                     break;
            case 3:  red_player4_score.setText(" " + View.redScores[i-1]);
                     break;
-           // case 4:  red_player4.setText(" " + View.redFirst.get(i-1));
-           //          red_player4.setVisible(true);
-           //          break;
-           // case 5:  mred_player5.setText(" " + View.redFirst.get(i-1));
-           //          red_player5.setVisible(true);
-           //          break;
         }
       }
 
@@ -999,12 +985,6 @@ public class act_screen extends javax.swing.JFrame {
                     break;
            case 3:  green_player3_score.setText(" " + View.blueScores[i-1]);
                     break;
-           // case 4:  red_player4.setText(" " + View.redFirst.get(i-1));
-           //          red_player4.setVisible(true);
-           //          break;
-           // case 5:  mred_player5.setText(" " + View.redFirst.get(i-1));
-           //          red_player5.setVisible(true);
-           //          break;
         }
       }
     }
@@ -1012,69 +992,73 @@ public class act_screen extends javax.swing.JFrame {
     //--------------------------------------------------------------------------
     public void max_score() {
 
+      // find highest value in View.redScores
       max_red = 0;
-      max_green = 0;
+      for (int i = 1; i < View.redScores.length; i++){
+        if (View.redScores[i] > View.redScores[max_red]) {
+            max_red = i;
+        }
+      }
 
-      // red max
-         for (int i = 1; i < View.redScores.length; i++)
-             if (View.redScores[i] > View.redScores[max_red])
-                 max_red = i+1;
-      // green max
-         for (int i = 1; i < View.blueScores.length; i++)
-             if (View.blueScores[i] > View.blueScores[max_green])
-                 max_green = i+1;
+      // find highest value in View.blueScores
+      max_green = 0;
+      for (int j = 1; j < View.blueScores.length; j++){
+        if (View.blueScores[j] > View.blueScores[max_green]){
+            max_green = j;
+        }
+      }
+
     }
 
     //--------------------------------------------------------------------------
     public void effect() {
-      if (max_red>max_green){
+      //reset visibility
+      dis_Names();
+      red_total_score.setVisible(true);
+      green_total_score.setVisible(true);
+
+      if (View.redScores[max_red]>View.blueScores[max_green]){
+
         switch (max_red) {
-           case 1:
+           case 0:
                     red_player1.setVisible(!visibility);
                     red_player1_score.setVisible(!visibility);
                     break;
-           case 2:
+           case 1:
                     red_player2.setVisible(!visibility);
                     red_player2_score.setVisible(!visibility);
                     break;
-           case 3:
+           case 2:
                     red_player3.setVisible(!visibility);
                     red_player4_score.setVisible(!visibility);
                     break;
-           // case 4:  red_player4.setText(" " + View.redFirst.get(i-1));
-           //          red_player4.setVisible(true);
-           //          break;
-           // case 5:  mred_player5.setText(" " + View.redFirst.get(i-1));
-           //          red_player5.setVisible(true);
-           //          break;
         }
       }
-    else if(max_green>max_red) {
+    else if(View.blueScores[max_green]>View.redScores[max_red]) {
         switch (max_green) {
-           case 1:
+           case 0:
                     green_player1.setVisible(!visibility);
                     green_player1_score.setVisible(!visibility);
                     break;
-           case 2:
+           case 1:
                     green_player2.setVisible(!visibility);
                     green_player2_score.setVisible(!visibility);
                     break;
-           case 3:
+           case 2:
                     green_player4.setVisible(!visibility);
                     green_player3_score.setVisible(!visibility);
                     break;
-           // case 4:  monthString = "April";
-           //          break;
-           // case 5:  monthString = "May";
-           //          break;
         }
       }
+
+
       if(View.redScore>View.blueScore){
-        green_total_score.setVisible(!visibility);
+
+        red_total_score.setVisible(!visibility);
       }
       else if(View.blueScore>View.redScore)
       {
-        red_total_score.setVisible(!visibility);
+        green_total_score.setVisible(!visibility);
       }
 
       visibility= !visibility;
@@ -1083,10 +1067,9 @@ public class act_screen extends javax.swing.JFrame {
     }
 
     public void start() {
-
+        max_red=0;
+        max_green=0;
         visibility =true;
-        max_red = 2;
-        max_green = 0;
         java.util.TimerTask task = this.new UpdatePlayerEntry();
         clock.schedule(task, 500, 1000);
 
@@ -1141,14 +1124,18 @@ public class act_screen extends javax.swing.JFrame {
             if (progressBar == 0) {
                 timer.setVisible(true);
                 timerText.setVisible(true);
+
                 red_total_score.setText(" " + View.redScore);
                 green_total_score.setText(" " + View.blueScore);
+
+                max_score();
                 update_Scores();
                 effect();
+
                 if (DatagramServer.red_signal==true)
                 {
                   TeamA_update.setForeground(new java.awt.Color(255, 0, 51));
-                  TeamA_update.append(" action: " + DatagramServer.to_print);
+                  TeamA_update.append(" action: " + DatagramServer.to_print + "\n");
                   TeamA_update.setCaretPosition(TeamA_update.getDocument().getLength());
                   DatagramServer.red_signal=false;
                 }
@@ -1156,7 +1143,7 @@ public class act_screen extends javax.swing.JFrame {
                 if (DatagramServer.grn_signal==true)
                     {
                     TeamB_update.setForeground(new java.awt.Color(51, 255, 0));
-                    TeamB_update.append(" action: " + DatagramServer.to_print);
+                    TeamB_update.append(" action: " + DatagramServer.to_print + "\n");
                     TeamB_update.setCaretPosition(TeamB_update.getDocument().getLength());
                     DatagramServer.grn_signal=false;
                 }
