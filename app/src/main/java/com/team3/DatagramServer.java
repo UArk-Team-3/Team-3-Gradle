@@ -5,6 +5,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.nio.ByteBuffer;
 
+//Worked with Furqaan in-person while implmenting the following code. Feel free to verify with him about my participation
+
 class DatagramServer {
     private DatagramSocket receiver;
     private DatagramSocket sender;
