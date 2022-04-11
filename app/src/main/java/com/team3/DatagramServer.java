@@ -99,8 +99,7 @@ class DatagramServer {
             }
         }
 
-        //System.out.println("action: " + action);
-        //System.out.println("Blue Team Score: " + View.blueScore + " Red Team Score: " + View.redScore);
+        to_print = action;
         return action;
 
     }
