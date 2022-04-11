@@ -40,6 +40,7 @@ class DatagramServer {
                 this.broadcast(Integer.parseInt(strData.split(":")[1]));
             }
         }
+    }
 
     private void broadcast(int id) throws Exception {
         ByteBuffer buffer = ByteBuffer.allocate(4);
