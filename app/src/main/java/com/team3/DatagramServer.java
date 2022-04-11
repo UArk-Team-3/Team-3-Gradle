@@ -12,10 +12,16 @@ class DatagramServer {
     private DatagramSocket sender;
     private InetAddress broadcastAddress;
 
+    public static boolean  red_signal;
+    public static boolean  grn_signal;
+    public static String   to_print;
+
     DatagramServer(int receiverPort, int senderPort) throws Exception {
         this.receiver = new DatagramSocket(receiverPort);
         this.sender = new DatagramSocket(senderPort);
         this.broadcastAddress = InetAddress.getLocalHost();
+        this.red_signal= false;
+        this.grn_signal= false;
     }
 
     protected void listen() throws Exception {
@@ -34,7 +40,6 @@ class DatagramServer {
                 this.broadcast(Integer.parseInt(strData.split(":")[1]));
             }
         }
-    }
 
     private void broadcast(int id) throws Exception {
         ByteBuffer buffer = ByteBuffer.allocate(4);
@@ -65,6 +70,7 @@ class DatagramServer {
 
         // If blue player hits red player
         if(player1 <= 14){
+            grn_signal=true;
             // Double check that player two is a red player
             if(player2 >= 15){
                 // Grab blue player and red player code name; red is offset by 15
@@ -80,6 +86,7 @@ class DatagramServer {
 
         // Same as above but if red player hits blue player
         else if(player1 >= 15){
+            red_signal=true;
             if(player2 <= 14){
                 if(((player1 - 15) < numRedPlayers) && player2 < numBluePlayers){
                     action = View.redCode.get(player1 - 15) + " hit " + View.blueCode.get(player2);
@@ -97,7 +104,7 @@ class DatagramServer {
 
     }
 
-    // A utility method to convert the byte array
+  // A utility method to convert the byte array
 	// data into a string representation.
 	private StringBuilder data(byte[] a)
 	{
@@ -151,4 +158,3 @@ class DatagramServer {
         return true;
     }
 }
-
