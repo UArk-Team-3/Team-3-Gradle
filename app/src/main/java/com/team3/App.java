@@ -3,6 +3,8 @@
  */
 package com.team3;
 
+import java.net.SocketException;
+
 import com.team3.splashScreen.splashScreen;
 
 public class App {
@@ -29,7 +31,15 @@ public class App {
         //db.remove_player(22);
 
         // Selects first_name and last_name from "player" table and prints them
-        db.testQuery();
 
+        // db.testQuery();
+
+        try {
+            DatagramServer server = new DatagramServer(7501, 7500);
+            server.listen();
+        } catch (Exception exception) {
+            System.out.println("[-] Datagram server has encountered an exception:");
+            exception.printStackTrace();
+        }
     }
 }
