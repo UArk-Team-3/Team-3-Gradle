@@ -23,6 +23,9 @@ public class Controller implements KeyEventDispatcher {
         switch (event.getKeyCode()) {
             // Added by Abubakar Qasim - Feb 24th, enable faster testing
             case KeyEvent.VK_ESCAPE:
+                // remove players from DB
+                db.remove_all_players();
+
                 System.out.println("--Exiting--");
                 System.exit(0);
                 break;
@@ -35,6 +38,9 @@ public class Controller implements KeyEventDispatcher {
                     view.playerEntry.sortEntries();
                     view.loadActionScreen();
                     actionScreenLoaded = true;
+
+                    // send players to DB
+                    db.players_to_db(View.redFirst, View.redLast, View.redCode, View.blueFirst, View.blueLast, View.blueCode);
                 }
                 break;
         }

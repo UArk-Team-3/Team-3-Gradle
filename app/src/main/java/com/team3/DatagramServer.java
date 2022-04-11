@@ -2,34 +2,58 @@ package com.team3;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.nio.ByteBuffer;
+
+//Worked with Furqaan in-person while implmenting the following code. Feel free to verify with him about my participation
 
 class DatagramServer {
     private DatagramSocket receiver;
+    private DatagramSocket sender;
+    private InetAddress broadcastAddress;
 
     public static boolean  red_signal;
     public static boolean  grn_signal;
     public static String   to_print;
 
     DatagramServer(int receiverPort, int senderPort) throws Exception {
-        // Create a receiver for, well, receiving packets
         this.receiver = new DatagramSocket(receiverPort);
-
-        red_signal= false;
-        grn_signal= false;
-
-        while (true) {
-            // Sample data packet to receive
-            byte[] receivedData = new byte[32];
-            DatagramPacket receivedPacket = new DatagramPacket(receivedData, receivedData.length);
-
-            // Testing if data is being received by our socket
-            this.receiver.receive(receivedPacket);
-            to_print = processData(data(receivedData).toString());
-            System.out.println(new String(receivedData));
-        }
+        this.sender = new DatagramSocket(senderPort);
+        this.broadcastAddress = InetAddress.getLocalHost();
+        this.red_signal= false;
+        this.grn_signal= false;
     }
 
-    public String processData(String data){
+    protected void listen() throws Exception {
+        while (true) {
+            // Data packet specifications
+            byte[] data = new byte[32];
+            DatagramPacket packet = new DatagramPacket(data, data.length);
+
+            // Listen for packet
+            this.receiver.receive(packet);
+
+            // Data validation after packet is received
+            String strData = this.data(data).toString().replaceAll(" ", "");
+            if (this.validate(strData)) {
+                this.processData(strData);
+                this.broadcast(Integer.parseInt(strData.split(":")[1]));
+            }
+        }
+
+    private void broadcast(int id) throws Exception {
+        ByteBuffer buffer = ByteBuffer.allocate(4);
+        buffer.putInt(id);
+
+        DatagramPacket packet = new DatagramPacket(buffer.array(), buffer.array().length, this.broadcastAddress,
+                this.sender.getLocalPort());
+
+        this.sender.send(packet);
+        System.out.println(
+                "[+] '" + id + "' has been sent to " + this.broadcastAddress + " from port " + this.sender.getLocalPort());
+    }
+
+    private String processData(String data){
         // Grab the size of the codename arrays
         int numRedPlayers = View.blueCode.size();
         int numBluePlayers = View.redCode.size();
@@ -82,7 +106,7 @@ class DatagramServer {
 
   // A utility method to convert the byte array
 	// data into a string representation.
-	public static StringBuilder data(byte[] a)
+	private StringBuilder data(byte[] a)
 	{
 		if (a == null)
 			return null;
@@ -95,4 +119,42 @@ class DatagramServer {
 		}
 		return ret;
 	}
+
+    private boolean validate(String data) {
+        // If input is empty
+        if (data.isEmpty()) {
+            System.out.println("[-] No value entered for input.");
+            return false;
+        }
+
+        // If input does not have two distinct values
+        String[] strInput = data.split(":");
+        if (strInput.length != 2) {
+            System.out.println("[-] Input '" + data + "' does not have two numerical values separated by ':'.");
+            return false;
+        }
+
+        int[] intInput = new int[strInput.length];
+
+        // If input is non-numeric
+        try {
+            for (int i = 0; i < strInput.length; i++) {
+                intInput[i] = Integer.parseInt(strInput[i]);
+            }
+        } catch (NumberFormatException exception) {
+            System.out.println("[-] Input '" + data + "' does not contain only numerical values or an integer is too large.");
+            return false;
+        }
+
+        // If integer is not positive
+        for (int i = 0; i < strInput.length; i++) {
+            if (intInput[i] < 0) {
+                System.out.println("[-] Integer '" + strInput[i] + "' is not positive.");
+                return false;
+            }
+        }
+    
+        System.out.println("[+] Input '" + data + "' accepted.");
+        return true;
+    }
 }

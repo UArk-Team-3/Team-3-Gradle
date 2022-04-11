@@ -36,8 +36,9 @@ public class App {
 
         try {
             DatagramServer server = new DatagramServer(7501, 7500);
+            server.listen();
         } catch (Exception exception) {
-            System.out.println("[-] Datagram server could not be created due to network errors:");
+            System.out.println("[-] Datagram server has encountered an exception:");
             exception.printStackTrace();
         }
     }
